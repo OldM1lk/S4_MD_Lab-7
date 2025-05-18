@@ -1,4 +1,4 @@
-package com.example.lab_7.data
+package com.example.lab_7.data.local
 
 import com.google.android.gms.maps.model.LatLng
 

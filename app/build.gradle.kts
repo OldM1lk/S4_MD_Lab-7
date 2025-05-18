@@ -60,4 +60,8 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.accompanist.permissions)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.gson)
+    implementation(libs.google.maps.services)
 }

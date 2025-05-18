@@ -1,6 +1,5 @@
 package com.example.lab_7.ui.screens
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
@@ -13,9 +12,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.Polyline
 import com.google.maps.android.compose.rememberCameraPositionState
 
-@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun MapScreen(
     vm: MapViewModel = viewModel<MapViewModel>(),
@@ -23,6 +22,7 @@ fun MapScreen(
 ) {
     val cameraPositionState = rememberCameraPositionState()
     val points by vm.points
+    val route by vm.route
 
     Box(modifier.fillMaxSize()) {
         GoogleMap(
@@ -38,6 +38,10 @@ fun MapScreen(
             }
             points.end?.let {
                 Marker(position = it)
+                vm.buildRoute()
+            }
+            if (route.points.isNotEmpty()) {
+                Polyline(route.points)
             }
         }
         Button(
